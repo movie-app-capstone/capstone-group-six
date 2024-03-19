@@ -4,15 +4,20 @@ import SmallSidebar from "../components/SmallSidebar.jsx";
 import {BigSidebar, NavBar} from "../components/index.js";
 import {useContext, createContext, useState} from "react";
 
-const DashBoardContext = createContext()
-const DashboardLayout = () => {
+const DashBoardContext = createContext();
+
+
+const DashboardLayout = (isDarkThemEnabled) => {
     const user = {name:'joe'}
-    const [showSidebar,setShowSidebar] = useState(false)
-    const [isDarkTheme,setIsDarkTheme] = useState(false)
+    const [showSidebar,setShowSidebar] = useState(false);
+    const [isDarkTheme,setIsDarkTheme] = useState(false);
 
     const toggleDarkTheme = () => {
-        console.log('toggle drk');
-    };
+        const newDarkTheme = !isDarkTheme;
+        setIsDarkTheme(newDarkTheme);
+        document.body.classList.toggle('dark-theme', newDarkTheme);
+        localStorage.setItem('darkTheme', newDarkTheme);
+     };
     const toggleSidebar= () => {
         setShowSidebar(!showSidebar);
     };
@@ -20,7 +25,9 @@ const DashboardLayout = () => {
         console.log('logout');
     };
     return (
-        <DashBoardContext.Provider value={ {user,
+        <DashBoardContext.Provider
+            value={ {
+            user,
             showSidebar,
             toggleSidebar,
             isDarkTheme,
@@ -44,5 +51,5 @@ const DashboardLayout = () => {
 
 
 
-export default DashboardLayout;
 export const useDashboardContext = () => useContext(DashBoardContext);
+export default DashboardLayout;
