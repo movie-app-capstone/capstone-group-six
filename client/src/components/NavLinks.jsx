@@ -1,22 +1,29 @@
-
+import { useDashboardContext} from "../pages/DashboardLayout";
 import Wrapper from "../assets/wrappers/Navbar.js";
-import {FaAlignLeft} from "react-icons/all.js";
-import Logo from "./Logo.jsx";
+ import links from "../utils/links";
+import {NavLink} from "react-router-dom";
 
-const NavLinks = () => {
-        return (
-            <Wrapper>
-              <div className={"nav-center"}>
-                <button type={'button'} className={'toggle-btn'}>
-                    <FaAlignLeft />
-                </button>
-              <div>
-                <Logo />
-                <h4 className={'logo-text'}>Dashboard</h4>
-              </div>
+const NavLinks = ({isBigSidBar}) => {
+    const { toggleSidebar,user } = useDashboardContext();
+    return (
+        <div className={'nav-links'}>
+            { links.map((link) => {
+                const { text, path, icon } = link;
+                return (
+                    <NavLink
+                        to={path}
+                        key={text}
+                        className={'nav-link'}
+                        onClick={toggleSidebar}
+                        end
+                    >
+                        <span className={'icon'}>{icon}</span>
+                        {text}
 
-            </div>
-            </Wrapper>
-        );
+                    </NavLink>
+                );
+            })}
+        </div>
+    );
 };
 export default NavLinks;
