@@ -1,70 +1,79 @@
+// eslint-disable
 import { Link} from 'react-router-dom';
 import Wrapper from "../assets/wrappers/RegisterAndLoginPage.js";
-import {FormRow, Logo} from "../components";
+import {FormRow, Logo} from "../components/index.js";
+import { useState } from 'react';
 
-const options = [
-    {value: }
-]
+function App(){
+  const genres = [
+    "Action",
+    "Adventure",
+    "Anime",
+    "comedy",
+    "Comic Book",
+    "Crime",
+    "Disaster",
+    "Drama",
+    "Dramedy",
+    "Fantasy",
+    "Horror",
+    "Musical",
+    "Mystery",
+    "RomCom",
+    "Romance",
+    "Sci-Fi",
+    "Sports",
+    "Thriller",
+    "Western"
+  ];
+
+  const stream = [
+    "Disney+",
+    "Prime",
+    "Max",
+    "Netflix",
+    "Hulu",
+    "Paramount+",
+    "Peacock",
+    "Apple",
+    "ESPN+",
+    "Fubo",
+    "Crunchyroll",
+    "PlutoTV",
+    "AMC+",
+    "Starz",
+  ]
+  const initialFromState = genres.reduce((acc, curr) => {
+    acc[curr] = false }, {}), streams.reduce((acc, curr) => {
+      acc[curr] = false;
+    return acc;
+  }, {});
+  const [checkedGenres, setCheckedGenres] = useState(initialFromState);
+  
+  return(
+    <>
+      {genres.map((genre) =>(
+        <label>
+          {genre}
+          <input type="checkbox" onChange={(e) => setCheckedGenres({...checkedGenres, [genre]: e.target.checked})} value={checkedGenres[genres]}/>
+        </label>
+      ))}
+      {stream.map((stream) =>(
+        <label>
+          {stream}
+          <input type="checkbox" onChange={(e) => setCheckedStream({...checkedStream, [genre]: e.target.checked})} value={checkedStream[stream]}/>
+        </label>
+      ))}
+        </>
+  )
+}
 
 const Generator = () => {
+const [genre, setGenre] = useState()
  return (
- <Wrapper>
-     <form className='Generator'>
-     <P>Genre types</P>
-     <select  multiple>
-            <option value='Action'>Action</option>
-            <option value='Adventure'>Adventure</option>
-            <option value='Animation'>Animation</option>
-            <option value='Anime'>Anime</option>
-            <option value='Comedy'>Comedy</option>
-            <option value='Comic Book'>Comic Book</option>
-            <option value='Crime'>Crime</option>
-            <option value='Disaster'>Disaster</option>
-            <option value='Drama'>Drama</option>
-            <option value='Dramedy'>Dramedy</option>
-            <option value='Fantasy'>Fantasy</option>
-            <option value='Horror'>Horror</option>
-            <option value='Musical'>Musical</option>
-            <option value='Mystery'>Mystery</option>
-            <option value='RomCom'>RomCom</option>
-            <option value='Romance'>Romance</option>
-            <option value='Sci-Fi'>Sci-Fi</option>
-            <option value='Sports'>Sports</option>
-            <option value='Thriller'>Thriller</option>
-            <option value='Western'>Western</option>
-        </select>
 
-        <select  multiple>
-            <option value='Disney+'>Disney+</option>
-            <option value='Prime'>Prime</option>
-            <option value='Max'>Max</option>
-            <option value='Netflix'>Netflix</option>
-            <option value='Hulu'>Hulu</option>
-            <option value='Paramount+'>Paramount+</option>
-            <option value='Peacock'></option>
-            <option value='Apple'>Apple</option>
-            <option value='ESPN+'>ESPN+</option>
-            <option value='Fubo'>Fubo</option>
-            <option value='Crunchyroll'>Crunchyroll</option>
-            <option value='PlutoTV'>PlutoTV</option>
-            <option value='AMC+'>AMC+</option>
-            <option value='Starz'>Starz</option>
-        </select>
-
-        <p>Please select length in minutes</p>
-        <input type="range" min="1" max="360" value="180" class="slider" id="myRange"></input>
-
-     </form>
-     <CardActions>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick //start search for movie//
-                >
-                  Search
-                </Button>
-              </CardActions>
- </Wrapper>
+<div>
+ </div>
  );
 };
 
