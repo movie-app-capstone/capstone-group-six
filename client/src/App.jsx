@@ -9,6 +9,7 @@ import {
     AddReview,
     AllReviews, Profile, Stats, Admin
 } from './pages';
+import Generator from "./pages/Generator";
 
 const checkDefaultTheme = () => {
     const isDarkTheme = localStorage.getItem('darkTheme') === 'true';
@@ -62,6 +63,11 @@ const router = createBrowserRouter([
                 ],
             },
         ]
+    }, 
+    { 
+        path: '/generator',
+        element: <Generator />,
+        errorElement: <Error />,
     }
 ]);
 

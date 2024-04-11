@@ -4,15 +4,12 @@ export const apiSlice = createApi({
   reducerPath: "api",
 
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api",
+    baseUrl: "http://www.omdbapi.com/?i=tt3896198&apikey=66dfbb96",
   }),
 
   endpoints: (builder) => ({
-    getBooks: builder.query({
-      query: () => "/books",
-    }),
-    getBookById: builder.query({
-      query: (id) => `/books/${id}`,
+    getMovies: builder.query({
+      query: () => "/?i=tt3896198&apikey=66dfbb96",
     }),
     loginUser: builder.mutation({
       query: (credentials) => ({
