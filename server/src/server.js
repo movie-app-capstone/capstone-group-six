@@ -2,7 +2,7 @@
 const express = require('express');
 const app = express();
 const User = require('./models/user');
-const PORT = 3000;
+const PORT = process.env.PORT || 8000;
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const session = require('express-session');
