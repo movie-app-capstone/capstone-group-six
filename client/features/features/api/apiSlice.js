@@ -4,12 +4,25 @@ export const apiSlice = createApi({
   reducerPath: "api",
 
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://www.omdbapi.com/?i=tt3896198&apikey=66dfbb96",
-  }),
+    const fetch = require('node-fetch');
+
+    const url = 'https://api.themoviedb.org/3/trending/all/day?language=en-US';
+    const options = {
+      method: 'GET',
+      headers: {
+        accept: 'application/json',
+        Authorization: 'Bearer 5a798083447bb106e6d69341d762aae4'
+      }
+    };
+    
+    fetch(url, options)
+      .then(res => res.json())
+      .then(json => console.log(json))
+      .catch(err => console.error('error:' + err));}),
 
   endpoints: (builder) => ({
     getMovies: builder.query({
-      query: () => "/?i=tt3896198&apikey=66dfbb96",
+      query: () => "/?i=",
     }),
     loginUser: builder.mutation({
       query: (credentials) => ({
@@ -45,8 +58,6 @@ export const apiSlice = createApi({
 });
 
 export const {
-  useGetBooksQuery,
-  useGetBookByIdQuery,
   useLoginUserMutation,
   useRegisterUserMutation,
   useGetAccountDetailsQuery,
