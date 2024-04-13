@@ -27,25 +27,8 @@ function App(){
     "Western"
   ];
 
-  const stream = [
-    "Disney+",
-    "Prime",
-    "Max",
-    "Netflix",
-    "Hulu",
-    "Paramount+",
-    "Peacock",
-    "Apple",
-    "ESPN+",
-    "Fubo",
-    "Crunchyroll",
-    "PlutoTV",
-    "AMC+",
-    "Starz",
-  ]
   const initialFromState = genres.reduce((acc, curr) => {
-    acc[curr] = false }, {}), streams.reduce((acc, curr) => {
-      acc[curr] = false;
+    acc[curr] = false;
     return acc;
   }, {});
   const [checkedGenres, setCheckedGenres] = useState(initialFromState);
@@ -55,17 +38,12 @@ function App(){
       {genres.map((genre) =>(
         <label>
           {genre}
-          <input type="checkbox" onChange={(e) => setCheckedGenres({...checkedGenres, [genre]: e.target.checked})} value={checkedGenres[genres]}/>
-        </label>
-      ))}
-      {stream.map((stream) =>(
-        <label>
-          {stream}
-          <input type="checkbox" onChange={(e) => setCheckedStream({...checkedStream, [genre]: e.target.checked})} value={checkedStream[stream]}/>
+          <input type="checkbox" onChange={(e) => setCheckedGenres({...checkedGenres, [genre]: e.target.checked})} value={checkedGenres[genre]}/>
         </label>
       ))}
         </>
   )
+
 }
 
 const Generator = () => {
