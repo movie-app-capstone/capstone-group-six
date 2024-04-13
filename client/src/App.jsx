@@ -68,6 +68,12 @@ const router = createBrowserRouter([
         path: '/generator',
         element: <Generator />,
         errorElement: <Error />,
+    },
+
+    { 
+        path: '/AddReview',
+        element: <AddReview />,
+        errorElement: <Error />,
     }
 ]);
 
