@@ -25,6 +25,7 @@ const Landing = () => {
                     <Link to='/login' className='btn '>
                         Login / Sneak Peak
                     </Link>
+                    
                 </div>
                 <img src={main} alt="movies" className='img main-img' />
             </div>
