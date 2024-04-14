@@ -1,4 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
+import {useGetMovieIDQuery} from "/features/api/apiSlice";
 import {
   CardContent,
   Card,
@@ -8,10 +9,12 @@ import {
   CardActions,
   Button,
 } from "";
+import { apiSlice } from "../../features/features/api/apiSlice";
 
 const AddReview = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const {data} = useGetMovieIDQuery(id)
 
   
 
