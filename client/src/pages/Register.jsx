@@ -1,39 +1,42 @@
-import { Link} from 'react-router-dom';
-import Wrapper from "../assets/wrappers/RegisterAndLoginPage.js";
-import {FormRow, Logo} from "../components";
-const Register = () => {
- return (
- <Wrapper>
-     <form className='form'>
-         <Logo />
-         <h4>Register</h4>
-        <FormRow type="text" name={"name"}
-                 defaultValue={"Joe"}/>
-         <FormRow type="text" name={"lastName"}
-                  labeltext='last name'
-                  defaultValue={"Smith"}/>
-         <FormRow type="text"
-                  name={"location"}
-                  defaultValue={"earth"}/>
-         <FormRow type="email"
-                  name={"email"}
-                  defaultValue={"Joe@vetslearntocode.org"}/>
-         <FormRow type="password"
-                  name={"password"}
-                  defaultValue={"secret123"}/>
-         <button type={'submit'} className='btn btn-block'>
-             Submit
-         </button>
-         <p>
-             Already a Reviewer?
-             <Link to='/login' className={'member=btn'}>
-                 Login
-             </Link>
-         </p>
-     </form>
+import { Form, redirect, Link } from 'react-router-dom';
+import Wrapper from '../assets/wrappers/RegisterAndLoginPage';
+import { FormRow, Logo, SubmitBtn } from '../components';
+import customFetch from '../utils/customFetch';
+import { toast } from 'react-toastify';
+export const action = async ({ request }) => {
+    const formData = await request.formData();
+    const data = Object.fromEntries(formData);
 
- </Wrapper>
- );
+    try {
+        await customFetch.post('/auth/register', data);
+        toast.success('Registration successful');
+        return redirect('/login');
+    } catch (error) {
+        toast.error(error?.response?.data?.msg);
+
+        return error;
+    }
 };
-
+const Register = () => {
+    return (
+        <Wrapper>
+            <Form method='post' className='form'>
+                <Logo />
+                <h4>Register</h4>
+                <FormRow type='text' name='firstName' />
+                <FormRow type='text' name='lastName' labelText='last name' />
+                <FormRow type='text' name='location' />
+                <FormRow type='email' name='email' />
+                <FormRow type='password' name='password' />
+                <SubmitBtn />
+                <p>
+                    Already a member?
+                    <Link to='/login' className='member-btn'>
+                        Login
+                    </Link>
+                </p>
+            </Form>
+        </Wrapper>
+    );
+};
 export default Register;
