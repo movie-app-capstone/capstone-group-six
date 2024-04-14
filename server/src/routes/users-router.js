@@ -1,14 +1,17 @@
 //  setup
 const express = require('express');
 const { check } = require('express-validator');
-const usersController = require('../controllers/users.controller');
+const usersController = require('../controllers/users-controller');
 const usersRouter = express.Router();
+const fileUpload = require('../middleware/file-upload');
 
 //  routes - GET
 usersRouter.get('/', usersController.getAllUsers);
 
 //  routes - POST
-usersRouter.post('/signup',
+usersRouter.post(
+    '/signup',
+    fileUpload.single('image'),
     [
         check('name').not().isEmpty().isLength({max: 50}),
         check('email').normalizeEmail().isEmail(),

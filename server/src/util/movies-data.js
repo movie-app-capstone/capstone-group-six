@@ -1,10 +1,10 @@
 //  setup
-const API_KEY = '66dfbb96';
+const API_KEY = '';
 const axios = require('axios');
 
 //  data
 async function getMovieInfo () {
-    const response = await axios.get(`http://www.omdbapi.com/?i=tt3896198&apikey=${API_KEY}`);
+    const response = await axios.get(``);
     const data = response.data;
 
     return data;
