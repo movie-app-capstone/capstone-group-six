@@ -33,13 +33,14 @@ const signupUser = async (req, res, next) => {
             return next(error);
         }
 
-        let hashedPassword = await bcrypt.hash(password, 12);
+        let hashedPassword; 
+        hashedPassword = await bcrypt.hash(password, 12);
 
         const createdUser = new User({
             name,
             email,
             password: hashedPassword,
-            image, //req.file.path, 
+            image: "img", //req.file.path, 
             movies: []
         })
 
