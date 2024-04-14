@@ -3,7 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 
-require('dotenv').config();
+require('dotenv').config({ path: '../.env' });
 const fs = require('fs');
 const path = require('path');
 const bodyParser =  require('body-parser');
@@ -11,11 +11,11 @@ const HttpError = require('./models/http-error');
 
 const moviesRouter = require('./routes/movies-router');
 const usersRouter = require('./routes/users-router');
-const triviaRouter = require('./routes/trivia-router');
+//const triviaRouter = require('./routes/trivia-router');
 
 //  middleware
 app.use(bodyParser.json());
-app.use('uploads/images', express.static('uploads/images'));
+app.use('uploads/images', express.static(path.join('uploads/images')));
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -24,12 +24,12 @@ app.use((req, res, next) => {
         'Access-Control-Allow-Headers', 
         'Origin, X-Requested-With, Content-Type, Accept, Authorization'
     );
-
+    next();
 })
 
 app.use('/api/movies', moviesRouter);
 app.use('/api/users', usersRouter);
-app.use('/api/trivia', triviaRouter);
+//app.use('/api/trivia', triviaRouter);
 
 //  error handling
 app.use((req, res, next) => {
