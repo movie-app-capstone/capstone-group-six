@@ -22,10 +22,4 @@ usersRouter.post(
 
 usersRouter.post('/login', usersController.loginUser);
 
-//  routes - PATCH
-
-
-//  routes - DELETE
-
-
 module.exports = usersRouter;

@@ -53,20 +53,12 @@ app.use((error, req, res, next) => {
     res.json({message: error.message || '..unknown error..'})
 });
 
-//  cloud server
-/*
-mongoose
-    .connect(MONGODB_URL)
-    .then(() => {
-        app.listen(3000);
-    })
-    .catch(error => {
-        console.log(error);
-    });
-*/
 
-//  local testing server
-mongoose.connect('mongodb://localhost:27017/movieApp', {useNewUrlParser: true, useUnifiedTopology: true})
+//  database connection
+mongoose.connect(process.env.MONGODB_URL, {
+    useNewUrlParser: true, 
+    useUnifiedTopology: true,
+})
     .then(() => {
         console.log('..mongo connection open..')
     })
