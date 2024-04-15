@@ -24,7 +24,6 @@ const signupUser = async (req, res, next) => {
         return next(new HttpError('..invalid input..', 422));
     }
     
-    //  create new user after validation by email
     try {
         const { name, email, password } = req.body;
         const existingUser = await User.findOne({ email: email })
@@ -44,10 +43,8 @@ const signupUser = async (req, res, next) => {
             movies: []
         })
 
-        //  save new user to db
         await createdUser.save();
 
-        //  create token for user
         let token;
         token = jwt.sign(
             { userId: createdUser.id, email: createdUser.email },
@@ -64,7 +61,6 @@ const signupUser = async (req, res, next) => {
 
 const loginUser = async (req, res, next) => {
     try {
-        //  check if user exists and compare passwords
         const { email, password } = req.body;
         const confirmedUser = await User.findOne({ email: email });
         const checkPassword = await bcrypt.compare(password, confirmedUser.password);
