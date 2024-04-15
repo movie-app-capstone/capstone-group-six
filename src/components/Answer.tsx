@@ -1,5 +1,6 @@
 import Answers_module from './Answers.module.scss';
 import Answer_module from './Answer.module.scss';
+import React from 'react';
 type Props = {
     onPress: () => void;
     text: string;

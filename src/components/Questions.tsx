@@ -1,3 +1,4 @@
+import React from 'react';
 import { Question } from '../types';
 import Answers from './Answers';
 import Questions_module from './Questions.module.scss';

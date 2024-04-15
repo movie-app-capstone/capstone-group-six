@@ -1,3 +1,4 @@
+import React from 'react';
 import Answer_module from './Answer.module.scss';
 import Rest_module from './Rest.module.scss';
 import Classnames from 'classnames';
