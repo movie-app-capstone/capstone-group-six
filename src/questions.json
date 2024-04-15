@@ -9,6 +9,46 @@
             "question": "Who directed the movie 'Inception'?",
             "answers": ["Christopher Nolan", "Steven Spielberg", "Quentin Tarantino", "Martin Scorsese"],
             "correctAnswerIdx": 0
+        },
+        {
+            "question": "Who voiced Mushu in 'Mulan'?",
+            "answers": ["The Rock", "George Lopez", "Eddie Murphy", "Jackie Chan"],
+            "correctAnswerIdx": 2
+        },
+        {
+            "question": "What famous star produced 'Barbie'?",
+            "answers": ["Jennifer Lopez", "Jennifer Aniston", "Taylor Swift", "Margot Robbie"],
+            "correctAnswerIdx": 3
+        },
+        {
+            "question": "What score does Elle get on her LSAT exam in Legally Blonde?",
+            "answers": ["179", "200", "123", "98"],
+            "correctAnswerIdx": 0
+        },
+        {
+            "question": "What breakfast food does Donkey want to make with Shrek in Shrek?",
+            "answers": ["Corn Dogs", "Waffles", "Onions", "Rats"],
+            "correctAnswerIdx": 1
+        },
+        {
+            "question": "Who voiced Coraline in Coraline?",
+            "answers": ["Elle Woods", "Fiona", "Dakota Fanning", "Michelle Obama"],
+            "correctAnswerIdx": 2
+        },
+        {
+            "question": "In The Lion King. Mufasa dies from being trampled by a pack of?",
+            "answers": ["Bulls", "Flamingos", "Wildebeests", "Karens"],
+            "correctAnswerIdx": 2
+        },
+        {
+            "question": "What's the last word of this famous Mean Girls quote: 'You don't even go ____!'",
+            "answers": ["Class", "Work", "Church", "Here"],
+            "correctAnswerIdx": 3
+        },
+        {
+            "question": "Phil, Stu, and Alan spend all of The Hangover looking for their friend Doug. Where do they eventually find him?",
+            "answers": ["In the Casino", "On the Roof", "The Strip Club", "At Church"],
+            "correctAnswerIdx": 1
         }
 
     ]
