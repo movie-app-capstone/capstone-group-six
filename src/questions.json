@@ -1,0 +1,15 @@
+{
+    "questions": [
+        {
+            "question": "Which movie won the Academy Award for Best Picture in 1994?",
+            "answers": ["Forrest Gump", "Pulp Fiction", "The Shawshank Redemption", "Schindler's List"],
+            "correctAnswerIdx": 0
+        },
+        {
+            "question": "Who directed the movie 'Inception'?",
+            "answers": ["Christopher Nolan", "Steven Spielberg", "Quentin Tarantino", "Martin Scorsese"],
+            "correctAnswerIdx": 0
+        }
+
+    ]
+}
