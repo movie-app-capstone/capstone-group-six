@@ -1,24 +1,22 @@
-import styles from './App.module.scss';
+import React, { useState } from 'react';
 import questions from './questions.json';
-import { useState } from 'react';
 import { Questions } from './types';
 import StatBar from './components/StatBar';
-import QuestionComp from './components/Questions';
-import Answer from './components/Answer';
+import QuestionComp from './components/Questions'; 
 import Reset from './components/Rest';
 import Answer_module from './components/Answer.module.scss';
 import Classnames from 'classnames';
+import styles from './App.module.scss';
 
-function App() {
+const App = () => {
     const allQuestions = questions as Questions;
 
     const [currentQuestionIdx, setCurrentQuestionIdx] = useState(0);
     const [correctAnswers, setCorrectAnswers] = useState(0);
     const [incorrectAnswers, setIncorrectAnswers] = useState(0);
-
     const [waitingToAdvance, setWaitingToAdvance] = useState(false);
 
-    const onSubmit = (correct: boolean) => {
+    const onSubmit = (correct) => {
         if (correct) setCorrectAnswers(correctAnswers + 1);
         else setIncorrectAnswers(incorrectAnswers + 1);
 
@@ -73,3 +71,4 @@ function App() {
 }
 
 export default App;
+

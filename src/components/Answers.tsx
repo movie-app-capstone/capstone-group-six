@@ -21,13 +21,13 @@ function Answers(props: Props) {
     };
 
     // Check if props.question and props.question.answers are defined
-    if (!props.question || !props.question.answers || !Array.isArray(props.question.answers)) {
+    if (!props.question || !props.question.answer || !Array.isArray(props.question.answer)) {
         return <div>No answers available</div>; // Return some default message or UI
     }
 
     return (
         <div className={Answers_module.answers}>
-            {props.question.answers.map((answer, idx) => {
+            {props.question.answer.map((answer, idx) => {
                 let color = '';
 
                 if (showAnswer) {
@@ -50,3 +50,4 @@ function Answers(props: Props) {
 }
 
 export default Answers;
+

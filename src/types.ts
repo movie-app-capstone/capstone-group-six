@@ -1,6 +1,6 @@
 export type Questions = {
-    questions: []
-}
+    questions: [];
+};
 
 export type Question = {
     question: string;
