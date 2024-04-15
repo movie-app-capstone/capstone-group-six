@@ -1,4 +1,5 @@
 // setup
+const mongoose = require('mongoose');
 const Trivia = require('../models/trivia');
 
 //  seed

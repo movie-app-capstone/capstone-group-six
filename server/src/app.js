@@ -11,7 +11,7 @@ const HttpError = require('./models/http-error');
 
 const moviesRouter = require('./routes/movies-router');
 const usersRouter = require('./routes/users-router');
-//const triviaRouter = require('./routes/trivia-router');
+const triviasRouter = require('./routes/trivias-router');
 
 //  middleware
 app.use(bodyParser.json());
@@ -29,7 +29,7 @@ app.use((req, res, next) => {
 
 app.use('/api/movies', moviesRouter);
 app.use('/api/users', usersRouter);
-//app.use('/api/trivia', triviaRouter);
+app.use('/api/trivias', triviasRouter);
 
 //  error handling
 app.use((req, res, next) => {

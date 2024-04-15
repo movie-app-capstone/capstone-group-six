@@ -1,4 +1,5 @@
 //  setup
+const mongoose = require('mongoose');
 const Movie = require('../models/movie');
 const User = require('../models/user');
 
