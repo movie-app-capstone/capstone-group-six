@@ -1,9 +1,6 @@
-export type Questions = {
-    questions: [];
-};
-
 export type Question = {
-    question: string;
-    answer: string[];
+    question: string[];
+    answers: string[];
     correctAnswerIdx: number;
 }
+

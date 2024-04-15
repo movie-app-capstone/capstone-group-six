@@ -1,7 +1,5 @@
-
 import React, { useState } from 'react';
 import questions from './questions.json';
-import { Questions } from './types';
 import StatBar from './components/StatBar';
 import QuestionComp from './components/Questions'; 
 import Reset from './components/Rest';
@@ -10,14 +8,14 @@ import Classnames from 'classnames';
 import styles from './App.module.scss';
 
 const App = () => {
-    const allQuestions = questions as Questions;
+    const allQuestions = questions;
 
     const [currentQuestionIdx, setCurrentQuestionIdx] = useState(0);
     const [correctAnswers, setCorrectAnswers] = useState(0);
     const [incorrectAnswers, setIncorrectAnswers] = useState(0);
     const [waitingToAdvance, setWaitingToAdvance] = useState(false);
 
-    const onSubmit = (correct: any) => {
+    const onSubmit = (correct) => {
         if (correct) setCorrectAnswers(correctAnswers + 1);
         else setIncorrectAnswers(incorrectAnswers + 1);
 
