@@ -7,7 +7,7 @@ const movieSchema = new Schema({
     title: { type: String, required: true },
     year: { type: Number, required: true },
     rating: { type: Number, required: true },
-    review: { type: String, required: true, minLength: 5, maxLength: 250 },
+    review: { type: String, required: true, minLength: 5, maxLength: 500 },
     creator: { type: mongoose.Types.ObjectId, required: true, ref: 'User' }
 });
 
