@@ -11,6 +11,9 @@ export const apiSlice = createApi({
     getMovies: builder.query({
       query: () => "/movies",
     }),
+    getMovieById: builder.query({
+      query: (id) => `/movies/${id}`,
+    }),
     loginUser: builder.mutation({
       query: (credentials) => ({
         url: "/users/login",

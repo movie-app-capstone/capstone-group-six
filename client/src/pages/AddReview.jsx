@@ -1,5 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import {useGetMovieIDQuery} from "/features/api/apiSlice";
+import LikeButton from '.src/pages/LikeButton';
 import {
   CardContent,
   Card,
@@ -7,9 +8,8 @@ import {
   Grid,
   Link,
   CardActions,
-  Button,
 } from "";
-import { apiSlice } from "../../features/features/api/apiSlice";
+
 
 const AddReview = () => {
   const { id } = useParams();
@@ -17,10 +17,6 @@ const AddReview = () => {
   const {data} = useGetMovieIDQuery(id)
 
   
-
-  const handleBorrow = () => {
-    console.log("borrow button click!");
-  };
 
   const { movie } = data;
   console.log(movie);
@@ -57,16 +53,15 @@ const AddReview = () => {
                 style={{ height: "auto" }}
               />
               <CardActions>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={handleBorrow}
-                >
-                  Borrow
-                </Button>
+              <div>
+                <LikeButton />
+              </div>
               </CardActions>
             </Grid>
             <Grid item xs={12}></Grid>
+            <Typography variant="subtitle1" gutterBottom>
+               <p>This capstone project uses TMDB and the TMDB APIs but is not endorsed, certified, or otherwise approved by TMDB.</p>
+              </Typography>
           </Grid>
         </CardContent>
       </Card>
