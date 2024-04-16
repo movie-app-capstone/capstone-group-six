@@ -5,7 +5,7 @@ dotenv.config();
 
 
 export const createJWT = (payload) => {
-  const secret = process.env.JWT_TOKEN;
+  const secret = process.env.JWT_SECRET;
   if (!secret) {
     throw new Error('JWT_TOKEN is not set in .env file');
   }

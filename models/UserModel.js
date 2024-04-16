@@ -1,19 +1,27 @@
 import mongoose from 'mongoose';
 
-const userFields = {
-    firstName: {type: String, required: true},
-    lastName: {type: String, default: 'Not provided'},
-    email: {type: String, required: true},
-    password: {type: String, required: true},
-    location: {type: String, default: 'Not specified'},
-    userRole: {type: String, enum: ['user', 'admin'], default: 'user'},
-    avatarUrl: String,
+const UserSchema = new mongoose.Schema({
+    name: String,
+    email: String,
+    password: String,
+    lastName: {
+        type: String,
+        default: 'lastName',
+    },
+    location: {
+        type: String,
+        default: 'my city',
+    },
+    role: {
+        type: String,
+        enum: ['user', 'admin'],
+        default: 'user',
+    },
+    avatar: String,
     avatarPublicId: String,
-};
+});
 
-const UserSchema = new mongoose.Schema(userFields);
-
-UserSchema.methods.toJSON = () => {
+UserSchema.methods.toJSON = function () {
     let obj = this.toObject();
     delete obj.password;
     return obj;

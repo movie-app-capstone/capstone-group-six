@@ -2,12 +2,20 @@ import mongoose from 'mongoose';
 
 const ReviewSchema = new mongoose.Schema(
     {
-        title: {
+        movieTitle: {
             type: String,
             required: true,
         },
         reviewBody: {
             type: String,
+            required: false,
+        },
+        releaseDate: {
+            type: Number,
+            required: false,
+        },
+        rottenMovie: {
+        type: Boolean,
             required: false,
         },
         rating: {
@@ -23,7 +31,7 @@ const ReviewSchema = new mongoose.Schema(
         },
         userComment: {
             type: String,
-            required: true,
+            required: false,
         },
         genre: {
             type: String,
@@ -51,4 +59,4 @@ const ReviewSchema = new mongoose.Schema(
     { timestamps: true }
 );
 
-export default mongoose.model('Review', ReviewSchema);
+export default mongoose.model('Reviews', ReviewSchema);

@@ -33,7 +33,7 @@ const withValidationErrors = (validateValues) => {
 };
 
 export const validateReviewInput = withValidationErrors([
-  body('title').notEmpty().withMessage('title is required'),
+  body('movieTitle').notEmpty().withMessage('movie title is required'),
   body('genre').notEmpty().withMessage('genre is required'),
   body('rating').notEmpty().withMessage('rating is required'),
   body('review').notEmpty().withMessage('review is required'),
@@ -56,46 +56,46 @@ export const validateIdParam = withValidationErrors([
 export const validateRegisterInput = withValidationErrors([
   body('firstName').notEmpty().withMessage('name is required'),
   body('email')
-    .notEmpty()
-    .withMessage('email is required')
-    .isEmail()
-    .withMessage('invalid email format')
-    .custom(async (email) => {
-      const user = await User.findOne({ email });
-      if (user) {
-        throw new BadRequestError('email already exists');
-      }
-    }),
+      .notEmpty()
+      .withMessage('email is required')
+      .isEmail()
+      .withMessage('invalid email format')
+      .custom(async (email) => {
+        const user = await User.findOne({ email });
+        if (user) {
+          throw new BadRequestError('email already exists');
+        }
+      }),
   body('password')
-    .notEmpty()
-    .withMessage('password is required')
-    .isLength({ min: 8 })
-    .withMessage('password must be at least 8 characters long'),
+      .notEmpty()
+      .withMessage('password is required')
+      .isLength({ min: 8 })
+      .withMessage('password must be at least 8 characters long'),
   body('location').notEmpty().withMessage('location is required'),
   body('lastName').notEmpty().withMessage('last name is required'),
 ]);
 
 export const validateLoginInput = withValidationErrors([
   body('email')
-    .notEmpty()
-    .withMessage('email is required')
-    .isEmail()
-    .withMessage('invalid email format'),
+      .notEmpty()
+      .withMessage('email is required')
+      .isEmail()
+      .withMessage('invalid email format'),
   body('password').notEmpty().withMessage('password is required'),
 ]);
 
 export const validateUpdateUserInput = withValidationErrors([
   body('firstName').notEmpty().withMessage('name is required'),
   body('email')
-    .notEmpty()
-    .withMessage('email is required')
-    .isEmail()
-    .withMessage('invalid email format')
-    .custom(async (email, { req }) => {
-      const user = await User.findOne({ email });
-      if (user && user._id.toString() !== req.user.userId) {
-        throw new BadRequestError('email already exists');
-      }
-    }),
+      .notEmpty()
+      .withMessage('email is required')
+      .isEmail()
+      .withMessage('invalid email format')
+      .custom(async (email, { req }) => {
+        const user = await User.findOne({ email });
+        if (user && user._id.toString() !== req.user.userId) {
+          throw new BadRequestError('email already exists');
+        }
+      }),
   body('lastName').notEmpty().withMessage('last name is required'),
 ]);

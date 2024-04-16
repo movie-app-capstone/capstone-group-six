@@ -4,12 +4,8 @@ import { comparePassword, hashPassword } from '../utils/passwordUtils.js';
 import { UnauthenticatedError } from '../errors/customErrors.js';
 import { createJWT } from '../utils/tokenUtils.js';
 
-const userId = '661b58109f4925d296f233e7'; // Replace with the actual user ID
-const role = 'user'; // Replace with the actual user role
 
-const token = createJWT({ userId, role });
 
-console.log(token); // This will log the generated token
 export const register = async (req, res) => {
   const isFirstAccount = (await User.countDocuments()) === 0;
   req.body.role = isFirstAccount ? 'admin' : 'user';
@@ -29,7 +25,8 @@ export const login = async (req, res) => {
   if (!isValidUser) throw new UnauthenticatedError('invalid credentials');
 
   const token = createJWT({ userId: user._id, role: user.role });
-  const oneDay = 1000 * 60 * 60 * 24;
+  const oneDay = 1000 * 60 * 60 * 24 * 100;
+
 
   res.cookie('token', token, {
     httpOnly: true,

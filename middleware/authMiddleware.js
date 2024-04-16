@@ -6,31 +6,17 @@ import {
 import { verifyJWT } from '../utils/tokenUtils.js';
 
 export const authenticateUser = (req, res, next) => {
-  const token = req.cookies.token || req.headers.authorization?.split(' ')[1];
-
-  if (!token) {
-    throw new UnauthenticatedError('No authentication token provided');
-  }
+  const { token } = req.cookies;
+  if (!token) throw new UnauthenticatedError('authentication invalid');
 
   try {
     const { userId, role } = verifyJWT(token);
-
-    if (isTestUser(userId)) {
-      req.user = { userId, role, testUser: true };
-    } else {
-      req.user = { userId, role, testUser: false };
-    }
-
+    const testUser = userId === '64b2c07ccac2efc972ab0eca';
+    req.user = { userId, role, testUser };
     next();
   } catch (error) {
-    throw new UnauthenticatedError('Invalid authentication token');
+    throw new UnauthenticatedError('authentication invalid');
   }
-};
-
-const isTestUser = (userId) => {
-  // Replace with your own logic or list of test user IDs
-  const testUserIds = process.env.TEST_USER_IDS?.split(',') || [];
-  return testUserIds.includes(userId);
 };
 
 export const authorizePermissions = (...roles) => {

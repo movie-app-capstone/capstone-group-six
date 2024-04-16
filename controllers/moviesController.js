@@ -1,3 +1,4 @@
+/*
 //  setup
 const HttpError = require('../models/http.error');
 const uuid = require('uuid/v4');
@@ -7,6 +8,7 @@ const Movie = require('../models/movie');
 //  routes - GET
 const getMovieById = (req, res, next) => {
     try {
+/!*
         const movieId = req.params.movieid;
         const movie = movies.find(movie => {
             return movie.id === movieId;
@@ -17,6 +19,7 @@ const getMovieById = (req, res, next) => {
         }
 
         res.json({movie});
+*!/
     } catch (error) {
         next(error);
     }
@@ -112,4 +115,4 @@ exports.getMovieById = getMovieById;
 exports.getMoviesByUserId = getMoviesByUserId;
 exports.createMovieReview = createMovieReview;
 exports.updateMovieReview = updateMovieReview;
-exports.deleteMovieReview = deleteMovieReview;
+exports.deleteMovieReview = deleteMovieReview;*/

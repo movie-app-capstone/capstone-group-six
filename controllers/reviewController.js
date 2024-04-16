@@ -12,17 +12,11 @@ export const getAllReviews = async (req, res) => {
 
   if (search) {
     queryObject.$or = [
-      { title: { $regex: search, $options: 'i' } },
-      { company: { $regex: search, $options: 'i' } },
+      { movieTitle: { $regex: search, $options: 'i' } },
+      { genre: { $regex: search, $options: 'i' } },
     ];
   }
 
-  if (reviewStatus && reviewStatus !== 'all') {
-    queryObject.reviewStatus = reviewStatus;
-  }
-  if (reviewType && reviewType !== 'all') {
-    queryObject.reviewType = reviewType;
-  }
 
   const sortOptions = {
     newest: '-createdAt',
@@ -39,7 +33,7 @@ export const getAllReviews = async (req, res) => {
   const limit = Number(req.query.limit) || 10;
   const skip = (page - 1) * limit;
 
-  const reviews = await review.find(queryObject)
+  const reviews = await Review.find(queryObject)
     .sort(sortKey)
     .skip(skip)
     .limit(limit);
@@ -53,13 +47,13 @@ export const getAllReviews = async (req, res) => {
 
 export const createReview = async (req, res) => {
   req.body.createdBy = req.user.userId;
-  const review = await Review.create(req.body);
-  res.status(StatusCodes.CREATED).json({ review });
+  const reviews = await Review.create(req.body);
+  res.status(StatusCodes.CREATED).json({ reviews });
 };
 
 export const getReview = async (req, res) => {
-  const review = await Review.findById(req.params.id);
-  res.status(StatusCodes.OK).json({ review });
+  const reviews = await Review.findById(req.params.id);
+  res.status(StatusCodes.OK).json({ reviews });
 };
 
 export const updateReview = async (req, res) => {
@@ -67,7 +61,7 @@ export const updateReview = async (req, res) => {
     new: true,
   });
 
-  res.status(StatusCodes.OK).json({ msg: 'review modified', review: updatedReview });
+  res.status(StatusCodes.OK).json({ msg: 'review modified', reviews: updatedReview });
 };
 
 export const deleteReview = async (req, res) => {
