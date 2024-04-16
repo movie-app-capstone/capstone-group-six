@@ -10,7 +10,7 @@ day.extend(advancedFormat);
 
 const MovieReviews = ({
                           _id,
-                          title,
+                          movieTitle,
                           rating,
                           genre,
                           createdAt,
@@ -20,7 +20,7 @@ const MovieReviews = ({
   return (
       <Wrapper>
         <header>
-          <div className='main-icon'>{title.charAt(0)}</div>
+          <div className='main-icon'>{movieTitle.charAt(0)}</div>
           <div className='info'>
             <h5>{genre}</h5>
             <p>{rating}</p>

@@ -1,5 +1,5 @@
-const Loader = () => (
-    <div className="flex-center w-full">
+const Loading = () => (
+    <div className="loading">
       <img
           src="../assets/icons/loader.svg"
           alt="loader"
@@ -10,4 +10,4 @@ const Loader = () => (
     </div>
 );
 
-export default Loader;
+export default Loading;

@@ -1,8 +1,7 @@
 import { FormRow, SubmitBtn } from '../components';
 import Wrapper from '../assets/wrappers/DashboardFormPage';
-import { useOutletContext } from 'react-router-dom'; // <-- Import useOutletContext from 'react-router-dom'
+import { useOutletContext, redirect } from 'react-router-dom';
 import { Form } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom'; // <-- useNavigate is the correct method from 'react-router-dom'
 import customFetch from '../utils/customFetch';
 import { toast } from 'react-toastify';
 
@@ -19,9 +18,7 @@ export const action =
                 await customFetch.patch('/users/update-user', formData);
                 queryClient.invalidateQueries(['user']);
                 toast.success('Profile updated successfully');
-
-                const navigate = useNavigate(); // <-- Use useNavigate hook inside a component
-                navigate('/dashboard');
+                return redirect('/dashboard');
             } catch (error) {
                 toast.error(error?.response?.data?.msg);
                 return null;
@@ -29,11 +26,7 @@ export const action =
         };
 
 const Profile = () => {
-    const { user } = useOutletContext() || {};
-
-    if (!user) {
-        return <div>Loading...</div>;
-    }
+    const { user } = useOutletContext();
 
     const { name, lastName, email, location } = user;
 
@@ -54,7 +47,7 @@ const Profile = () => {
                             accept='image/*'
                         />
                     </div>
-                    <FormRow type='text' name='name' defaultValue={name} />
+                    <FormRow type='text' name='firstName' defaultValue={name} />
                     <FormRow
                         type='text'
                         name='lastName'

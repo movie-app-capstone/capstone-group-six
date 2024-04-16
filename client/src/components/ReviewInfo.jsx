@@ -1,7 +1,6 @@
 import Wrapper from '../assets/wrappers/ReviewInfo';
-import ReviewInfo from "./ReviewInfo.js";
 
-const JobInfo = ({ icon, text }) => {
+const ReviewInfo = ({ icon, text }) => {
   return (
     <Wrapper>
       <span className='review-icon'>{icon}</span>

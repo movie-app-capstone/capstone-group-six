@@ -6,13 +6,11 @@ import { useContext, createContext } from 'react';
 import { useQuery } from '@tanstack/react-query';
 
 const allReviewsQuery = (params) => {
-    const { search, reviewStatus, reviewType, sort, page } = params;
+    const { search, sort, page } = params;
     return {
         queryKey: [
             'reviews',
             search ?? '',
-            reviewStatus ?? 'all',
-            reviewType ?? 'all',
             sort ?? 'newest',
             page ?? 1,
         ],

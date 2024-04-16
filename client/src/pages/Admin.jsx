@@ -16,7 +16,7 @@ export const loader = async () => {
 };
 
 const Admin = () => {
-    const { users, review } = useLoaderData();
+    const { users, reviews } = useLoaderData();
     return (
         <Wrapper>
             <StatItem
@@ -28,7 +28,7 @@ const Admin = () => {
             />
             <StatItem
                 title='total reviews'
-                count={review}
+                count={reviews}
                 color='#647acb'
                 bcg='#e0e8f9'
                 icon={<FaCalendarCheck />}

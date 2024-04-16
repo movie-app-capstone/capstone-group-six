@@ -52,7 +52,6 @@ const EditReview = () => {
                 <h4 className='form-title'>edit review</h4>
                 <div className='form-center'>
                     <FormRow type='text' name='movieTitle' />
-                    <FormRow type='text' name='movieDirector' />
                     <FormRow type='number' name='movieYear' />
                     <FormRowSelect
                         labelText='genre'
@@ -68,12 +67,6 @@ const EditReview = () => {
                         name='reviewLocation'
                         defaultValue={user.location}
                     />}
-                    <FormRowSelect
-                        labelText='Review status'
-                        name='reviewStatus'
-                        defaultValue={REVIEW_STATUS.PENDING}
-                        list={Object.values(REVIEW_STATUS)}
-                    />
                     <SubmitBtn formBtn />
                 </div>
             </Form>
