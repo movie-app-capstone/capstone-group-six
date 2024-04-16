@@ -5,21 +5,114 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie App</title>
     <link rel="stylesheet" href="style.css">
-    <script src="index.js"></script>
 </head>
 <body>
     <h1>Movie App</h1>
 
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="Trivia.html">Movie Trivia</a></li>
-            <li><a href="login.html">Login</a></li>
-            <li><a href="signup.html">Sign Up</a></li>
-        </ul>
-    </nav>
+    <div id="root"></div>
 
-    <script src="bundle.js"></script>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/classnames/2.2.6/index.js"></script>
+    <script src="./src/App.js"></script>
 
+    <script type="text/babel">
+        const { useState } = React;
+
+        // Components
+        const QuestionComp = ({ question, onSubmit }) => (
+            <div>
+                <h3 className={Questions_module.question}>{question.question}</h3>
+                <Answers question={question} onSubmit={onSubmit} />
+            </div>
+        );
+
+        const StatBar = ({ currentQuestion, totalQuestions, correct, incorrect }) => (
+            <div className={StatBar_module.statcontainer}>
+                <p>
+                    Question: {currentQuestion}/{totalQuestions}
+                </p>
+                <p>Correct: {correct}</p>
+                <p>Incorrect: {incorrect}</p>
+            </div>
+        );
+
+        const Reset = ({ totalQuestions, correctQuestions, onPress }) => (
+            <div>
+                <h1>You scored: {(correctQuestions / totalQuestions) * 100}%</h1>
+                <button
+                    onClick={onPress}
+                    className={Classnames(Answer_module.answer, Rest_module['reset-button'])}
+                >
+                    Press to Try Again
+                </button>
+            </div>
+        );
+
+        const App = () => {
+            const [currentQuestionIdx, setCurrentQuestionIdx] = useState(0);
+            const [correctAnswers, setCorrectAnswers] = useState(0);
+            const [incorrectAnswers, setIncorrectAnswers] = useState(0);
+            const [waitingToAdvance, setWaitingToAdvance] = useState(false);
+
+            const onSubmit = (correct) => {
+                if (correct) setCorrectAnswers(correctAnswers + 1);
+                else setIncorrectAnswers(incorrectAnswers + 1);
+
+                setWaitingToAdvance(true);
+            };
+
+            const advance = () => {
+                setWaitingToAdvance(false);
+                setCurrentQuestionIdx(currentQuestionIdx + 1);
+            };
+
+            const reset = () => {
+                setCurrentQuestionIdx(0);
+                setCorrectAnswers(0);
+                setIncorrectAnswers(0);
+                setWaitingToAdvance(false);
+            };
+
+            if (currentQuestionIdx >= allQuestions.questions.length)
+                return (
+                    <Reset
+                        totalQuestions={allQuestions.questions.length}
+                        correctQuestions={correctAnswers}
+                        onPress={reset}
+                    />
+                );
+
+            return (
+                <div>
+                    <div>
+                        <StatBar
+                            currentQuestion={currentQuestionIdx + 1}
+                            totalQuestions={allQuestions.questions.length}
+                            correct={correctAnswers}
+                            incorrect={incorrectAnswers}
+                        />
+                        <QuestionComp
+                            question={allQuestions.questions[currentQuestionIdx]}
+                            onSubmit={onSubmit}
+                        />
+                        {true && (
+                            <button
+                                onClick={advance}
+                                className={Classnames(Answer_module.answer, styles['next-button'])}
+                            >
+                                Next Question...
+                            </button>
+                        )}
+                    </div>
+                </div>
+            );
+        };
+
+        ReactDOM.render(
+            <App />,
+            document.getElementById('root')
+        );
+    </script>
 </body>
 </html>
