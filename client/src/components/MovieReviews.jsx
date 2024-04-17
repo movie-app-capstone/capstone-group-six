@@ -1,5 +1,7 @@
-import PropTypes from 'prop-types';
-import { FaLocationArrow, FaBriefcase, FaCalendarAlt } from 'react-icons/fa';
+import { MdLocalMovies } from "react-icons/md";
+import { CgList } from "react-icons/cg";
+import { FcRating } from "react-icons/fc";
+
 import { Link, Form } from 'react-router-dom';
 import Wrapper from '../assets/wrappers/ReviewsContainer';
 import day from 'dayjs';
@@ -14,13 +16,13 @@ const MovieReviews = ({
                           rating,
                           genre,
                           createdAt,
-                          tags,
+                          rottenMovie,
                       }) => {
   const date = day(createdAt).format('MMM Do, YYYY');
   return (
       <Wrapper>
         <header>
-          <div className='main-icon'>{movieTitle.charAt(0)}</div>
+          <div className='main-icon'>{movieTitle}</div>
           <div className='info'>
             <h5>{genre}</h5>
             <p>{rating}</p>
@@ -28,10 +30,10 @@ const MovieReviews = ({
         </header>
         <div className='content'>
           <div className='content-center'>
-            <ReviewInfo icon={<FaLocationArrow />} text={reviewLocation} />
-            <ReviewInfo icon={<FaCalendarAlt />} text={date} />
-            <ReviewInfo icon={<FaBriefcase />} text={reviewType} />
-            <div className={`status ${genre}`}>{genre}</div>
+            <ReviewInfo icon={<MdLocalMovies />} text={movieTitle} />
+            <ReviewInfo icon={<CgList />} text={genre} />
+            <ReviewInfo icon={<FcRating />} text={rating} />
+            <div className={`status ${rottenMovie}`}>{rottenMovie}</div>
           </div>
           <footer className='actions'>
             <Link to={`../edit-review/${_id}`} className='btn edit-btn'>

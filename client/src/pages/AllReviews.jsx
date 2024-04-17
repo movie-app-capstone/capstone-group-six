@@ -6,19 +6,26 @@ import { useContext, createContext } from 'react';
 import { useQuery } from '@tanstack/react-query';
 
 const allReviewsQuery = (params) => {
-    const { search, sort, page } = params;
+    const {search, sort, page, genre, newParam} = params; // Add new parameter here
     return {
         queryKey: [
             'reviews',
             search ?? '',
             sort ?? 'newest',
+            genre ?? 'all',
             page ?? 1,
+            newParam ?? 'defaultValue', // Add new parameter here
         ],
         queryFn: async () => {
-            const { data } = await customFetch.get('/reviews', {
-                params,
-            });
-            return data;
+            try {
+                const {data} = await customFetch.get('/reviews', {
+                    params,
+                });
+                return data;
+            } catch (error) {
+                console.error(error);
+                throw error;
+            }
         },
     };
 };

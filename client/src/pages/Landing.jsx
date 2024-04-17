@@ -15,15 +15,13 @@ const Landing = () => {
                         Social <span> Movie Reviewers </span> app
                     </h1>
                     <p>
-                        sdlkgjsegjerl;gjersjgserkgjerl;g
-                        slgksjelrgjesrkgjerlkgjergjre
-                        s;dklgjlgjesrgjesrlgj
+                        Lets Review Some Movies!
                     </p>
                     <Link to='/register' className='btn register-link'>
                         Register
                     </Link>
                     <Link to='/login' className='btn '>
-                        Login / Sneak Peak
+                        Login  / Demo User
                     </Link>
                 </div>
                 <img src={main} alt="movies" className='img main-img' />

@@ -15,8 +15,8 @@ const ReviewSchema = new mongoose.Schema(
             required: false,
         },
         rottenMovie: {
-        type: Boolean,
-            required: false,
+        type: String,
+            required: true,
         },
         rating: {
             type: Number,
@@ -42,8 +42,8 @@ const ReviewSchema = new mongoose.Schema(
             default: Date.now,
         },
         spoilers: {
-            type: Boolean,
-            default: false,
+            type: String,
+            required: false,
         },
         movieYear: {
             type: Number,
