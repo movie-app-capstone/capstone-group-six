@@ -1,24 +1,46 @@
 import styled from 'styled-components';
 
-const Wrapper = styled.section`
-  margin-top: 4rem;
-  h2 {
-    text-transform: none;
-  }
-  & > h5 {
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-  }
-  .reviews {
-    display: grid;
-    grid-template-columns: 1fr;
-    row-gap: 2rem;
-  }
-  @media (min-width: 1120px) {
-    .reviews {
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
+const Wrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    background-color: #f9f9f9;
+
+    .main-icon {
+        font-size: 2rem;
+        margin-bottom: 10px;
     }
-  }
+
+    .info {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .content-center {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .actions {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
 `;
+
 export default Wrapper;

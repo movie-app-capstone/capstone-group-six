@@ -18,3 +18,16 @@ export const GENRE_TYPE = {
   DISASTER: 'disaster',
   OTHER: 'other',
 };
+
+export const SPOILER_TYPE = {
+  SPOILERS_INCLUDED: 'spoilers-included',
+  NO_SPOILERS: 'none',
+
+};
+
+export const ROTTEN_TYPE = {
+  ROTTEN: 'rotten',
+  WAIT_FOR_TV: 'wait for home',
+  MUST_SEE: 'must see'
+
+};

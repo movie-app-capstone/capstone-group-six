@@ -1,12 +1,12 @@
 import { FormRow, FormRowSelect, SubmitBtn } from '.';
 import Wrapper from '../assets/wrappers/DashboardFormPage';
 import { Form, useSubmit, Link } from 'react-router-dom';
-import { REVIEW_SORT_BY, GENRE_TYPE } from '../../../utils/constants';
+import { REVIEW_SORT_BY, GENRE_TYPE, SPOILER_TYPE } from '../../../utils/constants';
 import { useAllReviewsContext } from '../pages/AllReviews';
 
 const SearchContainer = () => {
   const { searchValues } = useAllReviewsContext();
-  const { search, reviewStatus, reviewType, sort } = searchValues;
+  const { search, genre, spoilers, rating, sort } = searchValues;
   const submit = useSubmit();
 
   const debounce = (onChange) => {
@@ -27,7 +27,7 @@ const SearchContainer = () => {
           <div className='form-center'>
             <FormRow
                 type='search'
-                name='movieTitle'
+                name='search'
                 defaultValue={search}
                 onChange={debounce((form) => {
                   submit(form);
@@ -36,7 +36,7 @@ const SearchContainer = () => {
             <FormRow
                 type='number'
                 name='rating'
-                defaultValue={search}
+                defaultValue={rating}
                 onChange={debounce((form) => {
                   submit(form);
                 })}
@@ -45,7 +45,7 @@ const SearchContainer = () => {
                 labelText='genre'
                 name='genre'
                 list={['all', ...Object.values(GENRE_TYPE)]}
-                defaultValue={reviewType}
+                defaultValue={genre}
                 onChange={(e) => {
                   submit(e.currentTarget.form);
                 }}
@@ -58,46 +58,15 @@ const SearchContainer = () => {
                   submit(form);
                 })}
             />
-            <FormRow
-                type='checkbox'
-                name='spoilers'
-                defaultValue={search}
-                onChange={debounce((form) => {
-                  submit(form);
-                })}
-            />
-            <FormRow
-                type='number'
-                name='likes'
-                defaultValue={search}
-                onChange={debounce((form) => {
-                  submit(form);
-                })}
-            />
-            <FormRow
-                type='number'
-                name='dislikes'
-                defaultValue={search}
-                onChange={debounce((form) => {
-                  submit(form);
-                })}
-            />
-            <FormRow
-                type='number'
-                name='movieYear'
-                defaultValue={search}
-                onChange={debounce((form) => {
-                  submit(form);
-                })}
-            />
-            <FormRow
-                type='text'
-                name='movieDirector'
-                defaultValue={search}
-                onChange={debounce((form) => {
-                  submit(form);
-                })}
-            />
+              <FormRowSelect
+                  labelText='spoilers'
+                  name='spoilers'
+                  list={['all', ...Object.values(SPOILER_TYPE)]}
+                  defaultValue={spoilers}
+                  onChange={debounce((form) => {
+                      submit(form);
+                  })}
+              />
             <FormRowSelect
                 name='sort'
                 defaultValue={sort}

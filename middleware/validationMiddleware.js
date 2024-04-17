@@ -4,7 +4,6 @@ import {
   NotFoundError,
   UnauthorizedError,
 } from '../errors/customErrors.js';
-import { GENRE_TYPE} from '../utils/constants.js';
 import mongoose from 'mongoose';
 import MovieReviews from '../models/ReviewModel.js';
 import User from '../models/UserModel.js';
@@ -37,6 +36,13 @@ export const validateReviewInput = withValidationErrors([
   body('genre').notEmpty().withMessage('genre is required'),
   body('rating').notEmpty().withMessage('rating is required'),
   body('review').notEmpty().withMessage('review is required'),
+  body('rottenMovie')
+      .notEmpty()
+      .withMessage('rottenMovie must be  provided'),
+
+  body('spoilers')
+      .notEmpty()
+      .withMessage('spoilers must be  provided'),
 ]);
 
 export const validateIdParam = withValidationErrors([

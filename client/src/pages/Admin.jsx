@@ -1,4 +1,6 @@
-import { FaSuitcaseRolling, FaCalendarCheck } from 'react-icons/fa';
+import { SiThemoviedatabase} from 'react-icons/si';
+import { FiUsers } from "react-icons/fi";
+
 import { useLoaderData, redirect } from 'react-router-dom';
 import customFetch from '../utils/customFetch';
 import Wrapper from '../assets/wrappers/StatsContainer';
@@ -24,14 +26,14 @@ const Admin = () => {
                 count={users}
                 color='#e9b949'
                 bcg='#fcefc7'
-                icon={<FaSuitcaseRolling />}
+                icon={<FiUsers />}
             />
             <StatItem
                 title='total reviews'
                 count={reviews}
                 color='#647acb'
                 bcg='#e0e8f9'
-                icon={<FaCalendarCheck />}
+                icon={<SiThemoviedatabase />}
             />
         </Wrapper>
     );

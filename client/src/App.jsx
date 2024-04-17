@@ -99,7 +99,7 @@ const router = createBrowserRouter([
                         loader: adminLoader,
                     },
                     {
-                        path: 'edit-reviews/:id',
+                        path: 'edit-review/:id',
                         element: <EditReviews />,
                         loader: editReviewsLoader(queryClient),
                         action: editReviewsAction(queryClient),

@@ -1,15 +1,10 @@
-import MovieReviews from './MovieReviews';
+import Job from './MovieReviews';
 import Wrapper from '../assets/wrappers/ReviewsContainer';
-import { useAllReviewsContext } from '../pages/AllReviews';
+import {useAllReviewsContext} from '../pages/AllReviews';
 import PageBtnContainer from './PageBtnContainer';
-
+import MovieReviews from "./MovieReviews";
 const ReviewsContainer = () => {
     const { data } = useAllReviewsContext();
-
-    // Check if data and reviews exist
-    if (!data || !data.reviews) {
-        return <div>Loading...</div>;
-    }
 
     const { reviews, totalReviews, numOfPages } = data;
     if (reviews.length === 0) {
@@ -26,7 +21,7 @@ const ReviewsContainer = () => {
             </h5>
             <div className='reviews'>
                 {reviews.map((review) => {
-                    return <MovieReviews key={review._id} {...reviews} />;
+                    return <MovieReviews key={review._id} {...review} />;
                 })}
             </div>
             {numOfPages > 1 && <PageBtnContainer />}
